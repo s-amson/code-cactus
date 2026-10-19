@@ -1,0 +1,117 @@
+/* =========================================================
+   WELCOME PAGE  (js/pages/welcome.js)
+   ========================================================= */
+.mesas, .dunes { left: 0; right: 0; }
+.mesas svg, .dunes svg { display: block; width: 100%; height: 100%; }
+
+/* ---------- Welcome (Desert) Scene ---------- */
+.mesas  { bottom: 30vh; height: 34vh; }
+.mesas path { fill: var(--mesa-color); transition: fill 2.2s ease-in-out; }
+.dunes  { bottom: 33vh; height: 16vh; }
+.dunes path { fill: var(--dune-color); transition: fill 2.2s ease-in-out; }
+.ground-welcome {
+  left: -20px; right: -20px; bottom: 0; height: 40vh;
+  background: linear-gradient(var(--ground-top) 0 28%, var(--ground-bot) 28%);
+  border-top: 3px solid var(--ink);
+  border-radius: 50% 50% 0 0 / 70px 70px 0 0;
+  transition: background 2.2s ease-in-out;
+}
+.fg { inset: 0; }
+
+.cactus {
+  position: absolute;
+  left: var(--left, auto);
+  right: var(--right, auto);
+  bottom: var(--bottom, 0);
+  width: max(var(--w), 54px);
+}
+.cactus svg { display: block; width: 100%; height: auto; overflow: visible; transform-origin: 50% 100%; animation: sway 4s ease-in-out infinite alternate; }
+.cactus:nth-child(2n) svg { animation-duration: 5s; animation-delay: -1.5s; }
+.cactus:nth-child(3n) svg { animation-duration: 3.4s; animation-delay: -2.2s; }
+.cactus:hover svg { animation: wiggle .5s ease-in-out infinite; }
+.cactus svg.boing { animation: boing .7s var(--bounce); }
+
+@keyframes sway   { from { transform: rotate(-1.6deg); } to { transform: rotate(1.6deg); } }
+@keyframes boing {
+  0%   { transform: scale(1, 1); }
+  20%  { transform: scale(1.25, .7); }
+  45%  { transform: scale(.82, 1.25); }
+  70%  { transform: scale(1.08, .94); }
+  100% { transform: scale(1, 1); }
+}
+
+/* ---------- Hero (Title + Sign In Button) ---------- */
+.hero {
+  left: 0; right: 0;
+  top: calc(var(--nav-h) + 4vh + 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin-bottom: 2.8vh;
+}
+
+.t-coms    { display: block; font-size: clamp(4rem, min(15vw, 18vh), 10.5rem); line-height: .9; letter-spacing: .02em; color: #2fc46b; }
+.t-dummies { display: block; font-size: clamp(2.8rem, min(11vw, 13vh), 7.8rem); line-height: .95; letter-spacing: .02em; color: #ff5fa2; margin-top: 0.06em; }
+
+.letter { display: inline-block; cursor: pointer; }
+.glyph  { display: inline-block; transform-origin: 50% 80%; }
+.letter:hover .glyph { animation: jelly .6s; }
+.letter.hop .glyph   { animation: hop .6s var(--bounce); }
+
+@keyframes hop {
+  0%   { transform: translateY(0) rotate(0); }
+  40%  { transform: translateY(-28%) rotate(-10deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+.btn-big {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  letter-spacing: .05em;
+  padding: .3em 1.9em .35em;
+  background: var(--yellow);
+  color: var(--ink);
+  border: 4px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 7px 0 var(--ink);
+  transition: transform .12s, box-shadow .12s;
+  animation: nudge 3.2s ease-in-out 1.5s infinite;
+}
+.btn-big:hover  { transform: translateY(-3px) scale(1.06); box-shadow: 0 10px 0 var(--ink); animation: none; }
+.btn-big:active { transform: translateY(5px) scale(.97);   box-shadow: 0 2px 0 var(--ink); animation: none; }
+.btn-big.squish { animation: squish .5s var(--bounce) forwards; }
+
+@keyframes nudge {
+  0%, 82%, 100% { transform: scale(1) rotate(0); }
+  86% { transform: scale(1.08) rotate(-3deg); }
+  90% { transform: scale(1.08) rotate(3deg); }
+  94% { transform: scale(1.04) rotate(-2deg); }
+}
+@keyframes squish {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.18, .8); }
+  100% { transform: scale(1.1); }
+}
+
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .t-coms { font-size: clamp(3rem, 16vw, 5rem); }
+  .t-dummies { font-size: clamp(2.2rem, 12vw, 3.8rem); }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { top: calc(var(--nav-h) + 8px); }
+  .title { margin-bottom: 1vh; }
+  .t-coms { font-size: clamp(2.6rem, 10vh, 5rem); }
+  .t-dummies { font-size: clamp(2rem, 8vh, 4rem); }
+}

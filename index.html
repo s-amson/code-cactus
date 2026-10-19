@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CODE CACTUS</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌵%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fira+Code:wght@600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/welcome.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/frame.css">
+  <link rel="stylesheet" href="css/games.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="css/introduction.css">
+</head>
+<body>
+
+<!-- ============ Reusable SVG Symbols ============ -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="cactus" viewBox="0 0 100 200">
+    <ellipse cx="50" cy="190" rx="32" ry="9" fill="#e3cbb0" stroke="#1b1b1b" stroke-width="3"/>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 125 H16 V80" stroke="#1b1b1b" stroke-width="26"/>
+      <path d="M32 125 H16 V80" stroke="#1fb35a" stroke-width="18"/>
+      <path d="M68 150 H84 V100" stroke="#1b1b1b" stroke-width="26"/>
+      <path d="M68 150 H84 V100" stroke="#1fb35a" stroke-width="18"/>
+    </g>
+    <rect x="30" y="22" width="40" height="168" rx="20" fill="#1fb35a" stroke="#1b1b1b" stroke-width="4"/>
+    <path d="M63 42 V172" stroke="#52d884" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50 108 V176" stroke="#16934a" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#1b1b1b" stroke-width="2.5" stroke-linecap="round">
+      <path d="M28 58 l-7 -3"/><path d="M72 68 l7 -3"/><path d="M28 140 l-6 -2"/>
+      <path d="M72 118 l7 -2"/><path d="M9 70 l-5 -3"/><path d="M91 112 l5 -3"/>
+    </g>
+    <circle cx="43" cy="78" r="4.5" fill="#1b1b1b"/><circle cx="57" cy="78" r="4.5" fill="#1b1b1b"/>
+    <circle cx="44.5" cy="76.5" r="1.4" fill="#fff"/><circle cx="58.5" cy="76.5" r="1.4" fill="#fff"/>
+    <circle cx="38" cy="90" r="4" fill="#ff8fb1" opacity=".85"/><circle cx="62" cy="90" r="4" fill="#ff8fb1" opacity=".85"/>
+    <path d="M45 88 Q50 96 55 88" fill="none" stroke="#1b1b1b" stroke-width="2.6" stroke-linecap="round"/>
+    <g stroke="#1b1b1b" stroke-width="2">
+      <circle cx="43" cy="16" r="6.5" fill="#ff5fa2"/><circle cx="57" cy="16" r="6.5" fill="#ff5fa2"/>
+      <circle cx="50" cy="9" r="6.5" fill="#ff5fa2"/><circle cx="50" cy="22" r="6.5" fill="#ff5fa2"/>
+      <circle cx="50" cy="16" r="4.5" fill="#ffd400"/>
+    </g>
+  </symbol>
+
+  <symbol id="cloud" viewBox="0 0 200 110">
+    <path class="cloud-body" d="M40 100 Q10 100 12 78 Q14 58 38 58 Q40 30 72 30 Q92 8 120 28 Q150 20 158 50 Q190 52 190 78 Q190 100 160 100 Z"
+          fill="#fff" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M62 52 Q72 44 84 47" fill="none" stroke="#1b1b1b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M150 70 Q158 73 160 82" fill="none" stroke="#1b1b1b" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<div id="app">
+  <div class="sunset-glow"></div>
+  <!-- ============ Shared Sky ============ -->
+  <div class="sky" aria-hidden="false">
+    <div class="stars-layer">
+      <span class="star-dot" style="top:14vh;left:18vw;animation-delay:0.1s">✦</span>
+      <span class="star-dot" style="top:10vh;left:38vw;animation-delay:0.6s">★</span>
+      <span class="star-dot" style="top:22vh;left:54vw;animation-delay:1.2s">✦</span>
+      <span class="star-dot" style="top:12vh;left:76vw;animation-delay:0.4s">★</span>
+      <span class="star-dot" style="top:28vh;left:88vw;animation-delay:0.9s">✦</span>
+      <span class="star-dot" style="top:34vh;left:25vw;animation-delay:1.5s">★</span>
+      <span class="star-dot" style="top:19vh;left:64vw;animation-delay:0.3s">✦</span>
+      <div class="shooting-star"></div>
+    </div>
+
+    <!-- Sun -->
+    <button class="sun" id="sun" aria-label="Say hi to the sun">
+      <svg viewBox="-12 -12 144 144" id="sunSvg">
+        <g id="sunRays" stroke="#1b1b1b" stroke-width="5" stroke-linecap="round">
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(0 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(30 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(60 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(90 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(120 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(150 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(180 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(210 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(240 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(270 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(300 60 60)"/>
+          <line x1="60" y1="4" x2="60" y2="16" transform="rotate(330 60 60)"/>
+        </g>
+        <circle cx="60" cy="60" r="34" fill="#ffd400" stroke="#1b1b1b" stroke-width="4"/>
+        <circle cx="49" cy="55" r="4.5" fill="#1b1b1b"/><circle cx="71" cy="55" r="4.5" fill="#1b1b1b"/>
+        <circle cx="42" cy="68" r="5" fill="#ff8fb1" opacity=".8"/><circle cx="78" cy="68" r="5" fill="#ff8fb1" opacity=".8"/>
+        <path d="M49 68 Q60 80 71 68" fill="none" stroke="#1b1b1b" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Moon -->
+    <button class="moon" id="moon" aria-label="Say hi to the moon">
+      <svg viewBox="-12 -12 144 144">
+        <circle cx="60" cy="60" r="36" fill="#fff59d" stroke="#1b1b1b" stroke-width="4"/>
+        <circle cx="45" cy="42" r="6" fill="#fbc02d" opacity="0.45"/>
+        <circle cx="74" cy="48" r="4.5" fill="#fbc02d" opacity="0.45"/>
+        <circle cx="68" cy="76" r="5.5" fill="#fbc02d" opacity="0.45"/>
+        <circle cx="49" cy="56" r="4.5" fill="#1b1b1b"/><circle cx="71" cy="56" r="4.5" fill="#1b1b1b"/>
+        <circle cx="42" cy="68" r="5" fill="#ff8fb1" opacity=".8"/><circle cx="78" cy="68" r="5" fill="#ff8fb1" opacity=".8"/>
+        <path d="M50 69 Q60 79 70 69" fill="none" stroke="#1b1b1b" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Left-to-Right Drifting Clouds -->
+    <div class="cloud" style="--top:15vh;--w:21vw;--dur:165s;--delay:-50s"><svg viewBox="0 0 200 110"><use href="#cloud"/></svg></div>
+    <div class="cloud" style="--top:30vh;--w:15vw;--dur:130s;--delay:-18s"><svg viewBox="0 0 200 110"><use href="#cloud"/></svg></div>
+    <div class="cloud" style="--top:11vh;--w:13vw;--dur:210s;--delay:-130s"><svg viewBox="0 0 200 110"><use href="#cloud"/></svg></div>
+    <div class="cloud" style="--top:40vh;--w:18vw;--dur:185s;--delay:-95s"><svg viewBox="0 0 200 110"><use href="#cloud"/></svg></div>
+  </div>
+
+  <!-- ============ Navigation Taskbar ============ -->
+  <header class="nav">
+    <button class="logo" id="logo" aria-label="CODE CACTUS home">
+      <span class="logo-icon">🌵</span><span class="logo-text outlined">CODE CACTUS</span>
+    </button>
+    <nav class="nav-right" aria-label="Primary Navigation">
+      <button class="nav-link" data-soon>Creators</button>
+      <button class="nav-link" id="gamesNavBtn">Games</button>
+      <button class="nav-link" data-soon>Help</button>
+      <button class="icon-btn" id="soundBtn" aria-label="Turn sound off" aria-pressed="true">🔊</button>
+
+      <div class="mode-switch-group">
+        <button class="btn-mode active-mode" id="dayModeBtn" aria-label="Switch to Day Mode" aria-pressed="true">
+          <span>☀️</span><span class="mode-label">Day Mode</span>
+        </button>
+        <button class="btn-mode" id="nightModeBtn" aria-label="Switch to Night Mode" aria-pressed="false">
+          <span>🌙</span><span class="mode-label">Night Mode</span>
+        </button>
+      </div>
+
+      <button class="btn-small" id="backHomeBtn" aria-label="Back to the desert"><span>🏡</span><span class="mode-label">Desert</span></button>
+    </nav>
+  </header>
+
+  <!-- ============ Pages ============
+       Each page's markup lives in its own file (js/pages/*.js) and is
+       inserted here by js/app.js when the site starts. -->
+  <main id="pages"></main>
+
+  <!-- ============ Page-owned overlays (speech bubbles) ============ -->
+  <div id="overlays"></div>
+
+    <!-- ============ Sweeping Page Transition Curtain ============ -->
+  <div id="curtain" aria-hidden="true">
+    <div class="band" style="--bc:#ff5fa2; top:0%; height:21%; transition-delay:0ms;"></div>
+    <div class="band" style="--bc:#ffd400; top:20%; height:21%; transition-delay:80ms;"></div>
+    <div class="band" style="--bc:#2fc46b; top:40%; height:21%; transition-delay:160ms;"></div>
+    <div class="band" style="--bc:#33b5ff; top:60%; height:21%; transition-delay:240ms;"></div>
+    <div class="band" style="--bc:#ff8a00; top:80%; height:21%; transition-delay:320ms;"></div>
+    <div id="badge">
+      <svg viewBox="0 0 100 100"><polygon points="50,5 61,38 96,38 68,58 79,92 50,72 21,92 32,58 4,38 39,38" fill="#ffd400" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/></svg>
+      <h2 id="badgeText" class="outlined">Let's go!</h2>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/router.js"></script>
+<script src="js/shell.js"></script>
+<script src="js/pages/welcome.js"></script>
+<script src="js/pages/home.js"></script>
+<script src="js/pages/introduction.js"></script>
+<script src="js/pages/games.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
